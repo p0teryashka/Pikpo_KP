@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <article>
+        <!-- Здесь при рендеринге подставляется идентификатор записи (car_id), который при нажатии кнопки "СОХРАНИТЬ"
+             активирует функцию в router.py:
+             @app.route('/edit/<int:id>', methods=['POST'])
+             def edit_data(car_id: int):
+        -->
+        <form id="editform" action="/edit/{{ data_id }}" method="post">
+            <fieldset>
+                <legend>РЕДАКТИРОВАНИЕ ДАННЫХ ОБ ИГРОКЕ</legend>
+                <p><label for="nameInput">Имя : </label><br><input type="text" name="nameInput" value="{{ edit_data[1] }}"></p>
+                <p><label for="lastnameInput">Фамилия : </label><br><input type="text" name="lastnameInput" value="{{ edit_data[2] }}"></p>
+                <p><label for="ageInput">Возраст : </label><br><input type="text" name="ageInput" value="{{ edit_data[3] }}"></p>
+                <p><label for="heightInput">Рост : </label><br><input type="text" name="heightInput" value="{{ edit_data[4] }}"></p>
+            </fieldset>
+            <p><input type="submit" id="sendbtn" value="СОХРАНИТЬ"></p>
+        </form>
+    </article>
+
+{% endblock %}

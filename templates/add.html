@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <article>
+        <!-- При нажатии кнопки "ДОБАВИТЬ" форма передаст данные в функцию router.py:
+             @app.route('/add', methods=['POST'])
+             def add_data()
+        -->
+        <form id="addform" action="/add" method="post">
+            <fieldset>
+                <legend>ДОБАВЛЕНИЕ ЗАПИСИ ОБ ИГРОКЕ</legend>
+                <p><label for="nameInput">Имя : </label><br><input type="text" name="nameInput"></p>
+                <p><label for="lastnameInput">Фамилия : </label><br><input type="text" name="lastnameInput"></p>
+                <p><label for="ageInput">Возраст : </label><br><input type="text" name="ageInput"></p>
+                <p><label for="heightInput">Рост : </label><br><input type="text" name="heightInput"></p>
+            </fieldset>
+            <p><input type="submit" id="sendbtn" value="ДОБАВИТЬ"></p>
+        </form>
+    </article>
+    <!--<script type="text/javascript" src="/static/javascripts/formsend.js"></script>-->
+
+{% endblock %}

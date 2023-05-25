@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <article>
+        <!-- При нажатии кнопки "ПОИСК" форма передаст данные в функцию router.py:
+             @app.route('/search', methods=['POST'])
+             def search_data()
+        -->
+        <form id="searchform" action="/search" method="post">
+            <p><input type="text" name="searchInput">
+                <input type="submit" id="searchbtn" value="ПОИСК"></p>
+        </form>
+    </article>
+    <article>
+        <table align="center">
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Возраст</th>
+                <th>Рост</th>
+            </tr>
+            <tbody>
+            {% for row in data_from_table %}
+                <tr>
+                    <td>
+                        {{row[1]}}
+                    </td>
+                    <td>
+                        {{row[2]}}
+                    </td>
+                    <td>
+                        {{row[3]}}
+                    </td>
+                    <td>
+                        {{row[4]}}
+                    </td>
+                    <td>
+                        <!-- Формируем ссылку, при переходе на которую активируется маршрут
+                            @app.route('/edit/<int:id>', methods=['GET']) в router.py -->
+                        <a href="/edit/{{row[0]}}">Редактировать</a>
+                    </td>
+                    <td>
+                        <!-- Формируем ссылку, при переходе на которую активируется маршрут
+                            @app.route('/delete/<int:id>', methods=['GET']) в router.py -->
+                        <a href="/delete/{{row[0]}}">Удалить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+
+{% endblock %}

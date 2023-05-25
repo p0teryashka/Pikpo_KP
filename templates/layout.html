@@ -1,0 +1,45 @@
+<html>
+
+<head>
+		<meta charset="utf-8">
+		<title>{{title}}</title>
+		<link rel="stylesheet" href="/static/stylesheets/styles.css">
+		<script type="text/javascript" src="/static/javascripts/jquery-3.6.0.min.js"></script>
+</head>
+		<body>
+			<div class="wrapper">
+				<header>
+					<a href="/"><img src="/static/images/logot.jpg" alt="Whitesquare logo"></a>
+					<div class="heading">
+						<h1 id="head_name">{{page_name}}</h1>
+					</div>
+				</header>
+				{% if navmenu %}
+					<nav>
+						<ul class="top-menu">
+							{% for item in navmenu %}
+								<li><a href="{{item.addr}}">{{item.name}}</a></li>
+							{% endfor %}
+						</ul>
+					</nav>
+				{% endif %}
+				<main id="{{page_name}}">
+					{% block content %}{% endblock %}
+				</main>
+			</div>
+			<footer>
+				<div class="footer">
+					<div id="social">
+						<h3>Дополнительная информация</h3>
+						<a href="https://github.com/p0teryashka" class="social-icon twitter"></a>
+						<a href="https://ru.sport-wiki.org/vidy-sporta/voleybol/" class="social-icon google"></a>
+					</div>
+					<div id="footer-logo">
+						<a href="/"><img src="/static/images/qww.jpg" alt="Whitesquare logo"></a>
+					</div>
+				</div>
+			</footer>
+			<!-- javaScript для интерактивной подсветки пунктов меню -->
+			<script type="text/javascript" src="/static/javascripts/topmenu.js"></script>
+		</body>
+</html>
